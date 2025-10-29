@@ -1,0 +1,71 @@
+syntax = "proto3";
+package moba;
+option java_outer_classname = "MobaProto";
+
+// 网关↔客户端
+message Packet
+{
+  oneof payload
+  {
+    LoginReq login_req = 1;
+    LoginRsp login_rsp = 2;
+    MatchReq match_req = 3;
+    MatchRsp match_rsp = 4;
+    FrameMsg frame_msg = 5;
+  }
+}
+
+message LoginReq
+{
+  int64 uid = 1;
+  string token = 2;
+}
+
+message LoginRsp
+{
+  bool ok = 1;
+  string lobby_ip = 2;
+  int32 lobby_port = 3;
+}
+
+message MatchReq
+{
+  int64 uid = 1;
+  int32 mode = 2;
+  int32 score = 3;
+}
+
+message MatchRsp
+{
+  bool ok = 1;
+  string battle_ip = 2;
+  int32 battle_port = 3;
+  int64 room_token = 4;
+}
+
+message Result {
+  int64 room_token   = 1;
+  repeated int64 players = 2;
+  string battle_ip   = 3;
+  int32  battle_port = 4;
+}
+
+message FrameMsg
+{
+  int32 frame_id = 1;
+  repeated PlayerSnap players = 2;
+}
+
+message PlayerSnap
+{
+  int64 uid = 1;
+  float x = 2;
+  float y = 3;
+}
+
+message BattleEnd
+{
+  int64 roomToken = 1;
+  repeated int64 players = 2;
+  repeated int64 winners = 3;
+}
