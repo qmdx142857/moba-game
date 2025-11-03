@@ -1,5 +1,6 @@
 package com.hzx.game.gateway.net.client;
 
+import com.hzx.game.gateway.net.handler.InternalClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.group.ChannelGroup;
