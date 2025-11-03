@@ -10,5 +10,5 @@ public class Constant {
     public static final int MATCH_PORT = 9003;
     public static final int BATTLE_PORT = 9002;
 
-    public static final int DEFAULT_HP = 9002;
+    public static final int DEFAULT_HP = 100;
 }
